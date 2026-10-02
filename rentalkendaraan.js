@@ -9,13 +9,13 @@ const kendaraanList = [
     { id: "ABC-08", nama: "Supra", jenis: "Motor", tarifHari: 30000, status: "Aktif"},
     { id: "ABC-09", nama: "Revo", jenis: "Motor", tarifHari: 25000, status: "Aktif"},
     { id: "ABC-10", nama: "Vespa", jenis: "Motor", tarifHari: 60000, status: "Aktif"},
-    { id: "ABC-11", nama: "Lamborgini", jenis: "Mobil", tarifHari: 50000000, status: "Aktif"},
+    { id: "ABC-11", nama: "Lamborgini", jenis: "Mobil", tarifHari: 3000000, status: "Aktif"},
     { id: "ABC-12", nama: "Pajero", jenis: "Mobil", tarifHari: 400000, status: "Aktif"},
     { id: "ABC-13", nama: "Wuling", jenis: "Mobil", tarifHari: 300000, status: "Aktif"},
     { id: "ABC-14", nama: "Sedan", jenis: "Mobil", tarifHari: 600000, status: "Aktif"},
     { id: "ABC-15", nama: "Avanza", jenis: "Mobil", tarifHari: 700000, status: "Aktif"},
     { id: "ABC-16", nama: "Kijang", jenis: "Mobil", tarifHari: 800000, status: "Aktif"},
-    { id: "ABC-17", nama: "Sport", jenis: "Mobil", tarifHari: 10000000, status: "Aktif"},
+    { id: "ABC-17", nama: "Sport", jenis: "Mobil", tarifHari: 100000, status: "Aktif"},
     { id: "ABC-18", nama: "Angkot", jenis: "Mobil", tarifHari: 350000, status: "Aktif"},
     { id: "ABC-19", nama: "Truk", jenis: "Mobil", tarifHari: 900000, status: "Aktif"},
     { id: "ABC-20", nama: "Bajaj", jenis: "Mobil", tarifHari: 50000, status: "Aktif"},
@@ -28,7 +28,7 @@ const rentalRaw = [
   { id: "R04", idKendaraan: "ABC-04", penyewa: "Rendi", tglMulai: "2026-02-06", tglKembali: "2026-02-08", diskon: 0.05 },
   { id: "R05", idKendaraan: "ABC-05", penyewa: "Fakhri", tglMulai: "2026-03-05", tglKembali: "2026-03-07", diskon: 0.05 },
   { id: "R06", idKendaraan: "ABC-06", penyewa: "Alex", tglMulai: "2026-07-06", tglKembali: "2026-07-10", diskon: 0.05 },
-  { id: "R07", idKendaraan: "ABC-07", penyewa: "Tomi", tglMulai: "2026-05-10", tglKembali: "2026-07-11", diskon: 0.05 },
+  { id: "R07", idKendaraan: "ABC-07", penyewa: "Tomi", tglMulai: "2026-06-10", tglKembali: "2026-07-11", diskon: 0.05 },
   { id: "R08", idKendaraan: "ABC-08", penyewa: "Muji", tglMulai: "2026-07-11", tglKembali: "2026-07-12", diskon: 0.05 },
   { id: "R09", idKendaraan: "ABC-09", penyewa: "Sonyy", tglMulai: "2026-07-09", tglKembali: "2026-07-13", diskon: 0.05 },
   { id: "R10", idKendaraan: "ABC-10", penyewa: "Amir", tglMulai: "2026-07-10", tglKembali: "2026-07-14", diskon: 0.05 },
@@ -108,8 +108,7 @@ function buatRingkasan(dataRental) {
 
     const jumlahSewaPerKendaraan = {};
     for (const r of dataRental) {
-        jumlahSewaPerKendaraan[r.namaKendaraan] = (jumlahSewaPerKendaraan[r.namakendaraan] || 0) +1;
-    }
+    jumlahSewaPerKendaraan[r.namaKendaraan] = (jumlahSewaPerKendaraan[r.namaKendaraan] || 0) + 1;    }
     let kendaraanPalingSering = null;
     let jumlahTerbanyak = 0;
     for (const [nama, jumlah] of Object.entries(jumlahSewaPerKendaraan)) {
@@ -141,7 +140,7 @@ console.table(
     dataRental.slice(0, 31).map((r) => ({
         ID: r.id,
         kendaraan: r.namaKendaraan,
-        Lama: r.lamaRental + "hari",
+        Lama: r.lamaRental + " hari",
         "Biaya Akhir": rp(r.biayaAkhir),
         status: r.statusTransaksi,
     }))
